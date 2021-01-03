@@ -15,8 +15,8 @@ let mouse = {
 };
 
 window.addEventListener('mousemove', function (e) {
-    mouse.x = event.x;
-    mouse.y = event.y;
+    mouse.x = e.x;
+    mouse.y = e.y;
 });
 
 class Line {
@@ -41,8 +41,8 @@ class Line {
             c.closePath();
             if (c.isPointInPath(mouse.x, mouse.y) && color) {
                 c.strokeStyle = color;
-            };
-        };
+            }
+        }
 
         drawLinePath(150, '#baf2ef');
         drawLinePath(50, '#dcf3ff');
@@ -76,10 +76,10 @@ for (let i = 0; i < 100; i++) {
         new Line(
             start.x + ((unit + random) * i),
             start.y + (i + random) * -3 + Math.sin(i) * unit,
-            0.1 + (1 * i)
+            0.1 + i
         )
     );
-};
+}
 
 function animate() {
     requestAnimationFrame(animate);
@@ -87,6 +87,6 @@ function animate() {
     lineArray.forEach(line => {
         line.draw();
     })
-};
+}
 
 animate();
